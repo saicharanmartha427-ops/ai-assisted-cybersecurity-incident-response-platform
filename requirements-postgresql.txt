@@ -1,0 +1,2 @@
+# Optional PostgreSQL adapter. pg8000 is pure Python and avoids native .pyd/.DLL dependencies.
+pg8000==1.31.5

@@ -1,0 +1,17 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in your environment before deployment}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.openai.com/v1}
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai-compatible}
+      FLASK_DEBUG: "0"
+    volumes:
+      - cyberguard_data:/app/backend
+volumes:
+  cyberguard_data:

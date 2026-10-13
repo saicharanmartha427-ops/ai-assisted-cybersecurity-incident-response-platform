@@ -1,0 +1,13 @@
+{
+  "info":{"name":"CyberGuard AI Response Platform","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable":[{"key":"base","value":"http://localhost:5000"},{"key":"token","value":""}],
+  "item":[
+    {"name":"Health","request":{"method":"GET","url":"{{base}}/api/health"}},
+    {"name":"Login Analyst","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"username\":\"analyst\",\"password\":\"Analyst@123\"}"},"url":"{{base}}/api/auth/login"}},
+    {"name":"Dashboard","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{base}}/api/dashboard"}},
+    {"name":"Manual suspicious event","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"source_ip\":\"185.44.91.22\",\"destination_ip\":\"10.0.0.5\",\"port\":22,\"bytes\":850000,\"failed_logins\":95,\"requests_per_minute\":920,\"event_type\":\"Brute Force\"}"},"url":"{{base}}/api/events"}},
+    {"name":"Incidents","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{base}}/api/incidents"}},
+    {"name":"Playbooks","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{base}}/api/playbooks"}},
+    {"name":"Reports","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{base}}/api/reports"}}
+  ]
+}
