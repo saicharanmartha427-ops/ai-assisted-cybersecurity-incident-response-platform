@@ -23,7 +23,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("JWT_SECRET") or secrets.token_urlsafe(32)
 if not os.getenv("JWT_SECRET"):
     app.logger.warning("JWT_SECRET is not configured; a temporary random secret is being used. Set JWT_SECRET in backend/.env.")
-CORS(app, resources={r"/api/*": {"origins": os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")}})
+CORS(app, resources={r"/api/*": {"origins": ["https://cyber-ir-dashboard.onrender.com"]}})
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.getenv("SQLITE_DB", os.path.join(BASE_DIR, "cyber_ir.db"))
